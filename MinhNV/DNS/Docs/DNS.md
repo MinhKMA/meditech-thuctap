@@ -43,7 +43,7 @@ Mỗi Website có một tên (là tên miền hay đường dẫn URL:Universal 
 <a name="3"></a>
 ### III. Workflow 
 
-<img src="/Images/dns-e5.gif">
+<img src="https://github.com/MinhKMA/meditech-thuctap/blob/master/MinhNV/DNS/Images/dns-e5.gif">
 
 1. Khi máy tính của bạn cần kết nối với máy chủ lưu trữ trên Internet (ví dụ: MyGreatName.com), bạn chỉ cần nhập Tên miền (ví dụ: MyGreatName.com) vào URL của trình duyệt. Sau đó, máy tính của bạn sẽ liên hệ với Name Servers được cấu hình hoặc mặc định (thường là ISP Name Server), yêu cầu địa chỉ IP của máy chủ lưu trữ (ví dụ MyGreatName.com).
 
