@@ -9,6 +9,8 @@
     
     + [1. Cấu trúc cơ sở dữ liệu](#5)
     + [2. Các bản ghi](#6)
+    
+- [V. Tài liệu tham khảo](#7)
 
 <a name="1"></a>
 ## I.DNS là gì? 
@@ -316,5 +318,12 @@ Tên miền www.meditech.com sẽ là tên bí danh của tên miền meditech.c
 
 - Bản ghi PTR cho phép thực hiện chuyển đổi địa chỉ IP sang tên miền. Cú pháp của bản ghi PTR:
 
-    ``100.10.10.10.in-addr.arpa IN PTR www.meditech.com``
+    ``100.10.10.10.in-addr.arpa IN PTR www.meditech.com``
 
+<a name="7"></a>
+## V. Tài liệu tham khảo 
+
+- https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml
+- http://www.mygreatname.com/how-dns-works/e-04-how-dns-works.htm
+- https://quantrimang.com/tim-hieu-ve-dns-dns-lookup-la-gi-118286
+- https://www.unixmen.com/setting-dns-server-centos-7/
