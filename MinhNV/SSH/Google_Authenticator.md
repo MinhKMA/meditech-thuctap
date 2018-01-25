@@ -58,7 +58,7 @@ Cách 2: Manual entry - Sử dụng secret key được gen ra.
 
     ``auth required pam_google_authenticator.so``
 
-- Chỉnh sửa option `ChallengeResponseAuthentication` thành `yes`
+- Chỉnh sửa option `ChallengeResponseAuthentication` trong file `/etc/ssh/sshd_config` thành `yes`
 
 - Khởi động lại service ssh 
 
