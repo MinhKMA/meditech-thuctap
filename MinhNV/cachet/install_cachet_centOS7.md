@@ -50,7 +50,7 @@
     systemctl start memcached
     ```
 
-- edit ``/etc/my.cf`` file, add the following line at the end of the file
+- edit ``/etc/my.cnf`` file, add the following line at the end of the file
 
     ``default-time-zone='+07:00'``
 
@@ -167,6 +167,8 @@
     sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/sysconfig/selinux
     sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
     setenforce 0
+    systemctl disable firewalld
+    systemctl stop firewalld
     ```
 
 - go to the link 
