@@ -254,7 +254,7 @@ Các thành phần bên trong cú pháp của record SOA :
     meditech.com IN NS dns2.meditech.com
     ```
 
-Với khai báo trên, tên miền ksec.com sẽ do máy chủ tên miền có tên dns.meditech.com quản lý. Điều này có nghĩa, các bản ghi như A, CNAME, MX … của tên miền cấp dưới của nó sẽ được khai báo trên máy chủ dns1.meditech.com. và dns2.meditech.com.
+Với khai báo trên, tên miền meditech.com sẽ do máy chủ tên miền có tên dns.meditech.com quản lý. Điều này có nghĩa, các bản ghi như A, CNAME, MX … của tên miền cấp dưới của nó sẽ được khai báo trên máy chủ dns1.meditech.com. và dns2.meditech.com.
 
 #### 2.3 Bản ghi kiểu A 
 
