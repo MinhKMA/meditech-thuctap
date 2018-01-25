@@ -302,7 +302,7 @@ Tên miền www.meditech.com sẽ là tên bí danh của tên miền meditech.c
 
 - Bản ghi MX dùng để khai báo trạm chuyển tiếp thư điện tử của một tên miền.
 
-- Ví dụ : Để các thư điện tử có cấu trúc user@ksec.com được gửi đến trạm chuyển tiếp thư điện tử có tên mail.ksec.com, trên cơ sở dữ liệu cần khai báo bản ghi MX như sau:
+- Ví dụ : Để các thư điện tử có cấu trúc user@meditech.com được gửi đến trạm chuyển tiếp thư điện tử có tên mail.meditech.com, trên cơ sở dữ liệu cần khai báo bản ghi MX như sau:
 
     ``meditech.com IN MX 10 mail.meditech.com``
 
