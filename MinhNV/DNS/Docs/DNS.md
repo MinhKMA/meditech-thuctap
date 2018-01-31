@@ -267,7 +267,7 @@ Với khai báo trên, tên miền meditech.com sẽ do máy chủ tên miền c
 
     `meditech.com IN A 10.10.10.100`
 
-    Theo ví dụ trên, tên miền ksec.com được khai với bản ghi kiểu A trỏ đến địa chỉ 10.10.10.100 sẽ là tên của máy tính này.
+    Theo ví dụ trên, tên miền meditech.com được khai với bản ghi kiểu A trỏ đến địa chỉ 10.10.10.100 sẽ là tên của máy tính này.
 
 - Một tên miền có thể được khai nhiều bản ghi kiểu A khác nhau để trỏ đến các địa chỉ IP khác nhau. Như vậy có thể có nhiều máy tính có cùng tên trên mạng. Ngược lại một máy tính có một địa chỉ IP có thể có nhiều tên miền trỏ đến, tuy nhiên chỉ có duy nhất một tên miền được xác định là tên của máy, đó chính là tên miền được khai với bản ghi kiểu A trỏ đến địa chỉ của máy.
 
@@ -302,7 +302,7 @@ Tên miền www.meditech.com sẽ là tên bí danh của tên miền meditech.c
 
 - Bản ghi MX dùng để khai báo trạm chuyển tiếp thư điện tử của một tên miền.
 
-- Ví dụ : Để các thư điện tử có cấu trúc user@ksec.com được gửi đến trạm chuyển tiếp thư điện tử có tên mail.ksec.com, trên cơ sở dữ liệu cần khai báo bản ghi MX như sau:
+- Ví dụ : Để các thư điện tử có cấu trúc user@meditech.com được gửi đến trạm chuyển tiếp thư điện tử có tên mail.meditech.com, trên cơ sở dữ liệu cần khai báo bản ghi MX như sau:
 
     ``meditech.com IN MX 10 mail.meditech.com``
 
