@@ -117,7 +117,7 @@ value    float
 
 ### Count 
 
-EXP 1: Returns the number of non-null field values.
+EXP 1: Trả về số lượng của các non-null field values.
 
 ```sh
 > select count(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu' and type_instance = '1'
@@ -129,7 +129,7 @@ time count
 
 ### mean()
 
-Returns the arithmetic mean (average) for the values in a single field. The field type must be int64 or float64.
+Trả về giá trị trung bình cho các giá trị trong một trường duy nhất. Kiểu dữ liệu phải là int64 hoặc float64
 
 - Example 1: Calculate the mean field value associated with a field key
 
@@ -143,12 +143,12 @@ time mean
 ```
 
 ```sh 
-select mean(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu' and type_instance = '1'group by time(10s)
+select mean(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu' and type_instance = '1' group by time(10s)
 ```
 
 ### MEDIAN
 
-Returns the middle value from the sorted values in a single field.
+Trả về giá trị đứng giữa từ các giá trị được sắp xếp trong một trường đơn
 
 ```sh
 > select MEDIAN(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu' and type_instance = '1'
@@ -159,26 +159,9 @@ time median
 ```
 ### SUM
 
+Tính tổng của các giá trị 
+
 ```sh
-> select * from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and (time > now() - 1m) and type = 'virt_vcpu'
-name: virt_value
-time                host                                 instance       type      type_instance value
-----                ----                                 --------       ----      ------------- -----
-1516431262950526350 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160630000000
-1516431262950535951 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312140000000
-1516431272963648650 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160640000000
-1516431272963660995 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312160000000
-1516431282945501572 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160640000000
-1516431282945513594 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312170000000
-1516431292944565576 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160640000000
-1516431292944575934 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312170000000
-1516431302948962038 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160640000000
-1516431302948971473 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312190000000
-1516431312950227868 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 0             160650000000
-1516431312950238447 032d3fc6-7d95-b731-91b8-3031d32c81f6 cobbler-server virt_vcpu 1             312200000000
-
-### Returns the sum of field values associated with the field key.
-
 > select sum(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and (time > now() - 1m) and type = 'virt_vcpu'
 name: virt_value
 time                sum
@@ -188,7 +171,7 @@ time                sum
 
 ### BOTTOM
 
-Returns the smallest N field values associated with the field key.
+Trả về N giá trị nhỏ nhất 
 
 ```sh
 > select bottom(value, 10) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu'
@@ -209,22 +192,23 @@ time                bottom
 
 ***SETUP FORMAT TIME***
 
-``>precision rfc3339``
+``> precision rfc3339``
 
 ### FRIST 
 
-Select the first field value associated with a field key
+Chọn giá trị đầu tiên liên kết với một field key 
 
 ```sh
 > select first(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu'
 name: virt_value
 time                           first
 ----                           -----
+2018-01-25T01:19:12.944592883Z 335320000000
 ```
 
 ### LAST 
 
-Returns the field value with the most recent timestamp.
+Trả về giá trị trường mới nhất (được xác định bởi dấu thời gian)
 
 ```sh
 > select last(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu'
@@ -235,3 +219,244 @@ time                           last
 
 2018-01-19T01:31:52.670633215Z 97260000000
 ```
+### Max 
+
+Trả về giá trị lớn nhất 
+
+```sh
+> select max(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu'
+name: virt_value
+time                           max
+----                           ---
+2018-01-29T14:24:52.943322821Z 1404700000000
+```
+
+### Min 
+
+Trả về giá trị bé nhất 
+
+```sh 
+> select min(value) from virt_value where host = '032d3fc6-7d95-b731-91b8-3031d32c81f6' and type = 'virt_vcpu'
+name: virt_value
+time                           min
+----                           ---
+2018-01-30T11:11:43.194493067Z 2640000000
+```
+
+### Insert 
+
+Ở đây mình tạo ra một database và một series để dễ dành theo dõi hơi trong các ví dụ query tiếp theo 
+
+```sh
+CREATE DATABASE pirates
+> INSERT cpu,host=minhkma,region=kvm30 value=1
+> INSERT cpu,host=minhkma,region=kvm30 value=3
+> INSERT cpu,host=minhkma,region=kvm30 value=10
+> INSERT cpu,host=minhkma,region=kvm30 value=9
+> INSERT cpu,host=minhkma,region=kvm30 value=4
+> INSERT cpu,host=minhkma,region=kvm30 value=6
+> INSERT cpu,host=minhkma,region=kvm30 value=7
+> INSERT cpu,host=minhkma,region=kvm30 value=2
+> INSERT cpu,host=minhkma,region=kvm30 value=2
+> INSERT cpu,host=minhkma,region=kvm30 value=8
+> INSERT cpu,host=minhkma,region=kvm30 value=11
+> INSERT cpu,host=minhkma,region=kvm30 value=7
+> INSERT cpu,host=minhkma,region=kvm30 value=9
+```
+
+```sh
+> select * from cpu
+name: cpu
+time                           sample
+----                           ------
+2018-01-31T02:13:51.222039696Z 1
+2018-01-31T02:13:53.850030976Z 3
+2018-01-31T02:13:57.829384354Z 10
+2018-01-31T02:14:00.363663952Z 9
+2018-01-31T02:14:02.802142327Z 4
+2018-01-31T02:14:04.813133162Z 6
+2018-01-31T02:14:10.742070259Z 7
+2018-01-31T02:14:15.034200219Z 2
+2018-01-31T02:14:17.099288577Z 2
+2018-01-31T02:14:26.151766031Z 8
+2018-01-31T02:14:29.780351378Z 11
+2018-01-31T02:14:33.594484378Z 7
+2018-01-31T02:14:41.047571581Z 9
+```
+
+### Percentile
+
+### Sample
+
+Trả về N giá trị ngẫu nhiên 
+
+```sh
+> select sample(value,2) from cpu
+name: cpu
+time                           sample
+----                           ------
+2018-01-31T02:14:00.363663952Z 9
+2018-01-31T02:14:26.151766031Z 8
+```
+
+### Top
+
+Trả về N giá trị lớn nhất 
+
+```sh
+> select top(value,4) from cpu
+name: cpu
+time                           top
+----                           ---
+2018-01-31T02:13:57.829384354Z 10
+2018-01-31T02:14:00.363663952Z 9
+2018-01-31T02:14:29.780351378Z 11
+2018-01-31T02:14:41.047571581Z 9
+```
+
+### Cumulative_sum 
+
+Trả về giá trị cộng giữa tổng giá trị cũ cộng với 1 giá trị mới tiếp theo như dãy số sau `1, 3, 4 , 2, 5` sẽ là `1, 4, 8, 10, 15`
+
+```sh
+> select CUMULATIVE_SUM(value) from cpu
+name: cpu
+time                           cumulative_sum
+----                           --------------
+2018-01-31T02:13:51.222039696Z 1
+2018-01-31T02:13:53.850030976Z 4
+2018-01-31T02:13:57.829384354Z 14
+2018-01-31T02:14:00.363663952Z 23
+2018-01-31T02:14:02.802142327Z 27
+2018-01-31T02:14:04.813133162Z 33
+2018-01-31T02:14:10.742070259Z 40
+2018-01-31T02:14:15.034200219Z 42
+2018-01-31T02:14:17.099288577Z 44
+2018-01-31T02:14:26.151766031Z 52
+2018-01-31T02:14:29.780351378Z 63
+2018-01-31T02:14:33.594484378Z 70
+2018-01-31T02:14:41.047571581Z 79
+```
+
+### Derivative
+
+Trả về tỷ lệ thay đổi giữa các lần tiếp theo
+
+```sh 
+> select derivative(value) from cpu
+name: cpu
+time                           derivative
+----                           ----------
+2018-01-31T02:13:53.850030976Z 0.7610375328186021
+2018-01-31T02:13:57.829384354Z 1.759079763737434
+2018-01-31T02:14:00.363663952Z -0.39458945287220043
+2018-01-31T02:14:02.802142327Z -2.0504590285735054
+2018-01-31T02:14:04.813133162Z 0.994534617061047
+2018-01-31T02:14:10.742070259Z 0.16866429574805117
+2018-01-31T02:14:15.034200219Z -1.1649227881254556
+2018-01-31T02:14:17.099288577Z 0
+2018-01-31T02:14:26.151766031Z 0.662801982163324
+2018-01-31T02:14:29.780351378Z 0.826768482235179
+2018-01-31T02:14:33.594484378Z -1.0487311271001825
+2018-01-31T02:14:41.047571581Z 0.26834517637133837
+```
+
+Trong đó `0.7610375328186021` bằng 
+
+```sh
+   (3 - 1)     / (57.829384354s - 53.850030976s)
+-------------    -------------------------------
+      |                        |
+      |                        |
+chênh lệch giữa    chênh lệch giữa 2 khoảng thời gian      
+   2 giá trị                 
+```
+
+### Difference
+
+Trả lại giá trị chênh lệch giữa 2 giá trị liên tiếp
+
+```sh
+> select DIFFERENCE(value) from cpu
+name: cpu
+time                           difference
+----                           ----------
+2018-01-31T02:13:53.850030976Z 2
+2018-01-31T02:13:57.829384354Z 7
+2018-01-31T02:14:00.363663952Z -1
+2018-01-31T02:14:02.802142327Z -5
+2018-01-31T02:14:04.813133162Z 2
+2018-01-31T02:14:10.742070259Z 1
+2018-01-31T02:14:15.034200219Z -5
+2018-01-31T02:14:17.099288577Z 0
+2018-01-31T02:14:26.151766031Z 6
+2018-01-31T02:14:29.780351378Z 3
+2018-01-31T02:14:33.594484378Z -4
+2018-01-31T02:14:41.047571581Z 2
+```
+
+### Elapsed 
+
+Trả về chênh lệch giữa mốc thời gian của giá trị liên tiếp.
+
+```sh
+> select elapsed(value) from cpu
+name: cpu
+time                           elapsed
+----                           -------
+2018-01-31T02:13:53.850030976Z 2627991280
+2018-01-31T02:13:57.829384354Z 3979353378
+2018-01-31T02:14:00.363663952Z 2534279598
+2018-01-31T02:14:02.802142327Z 2438478375
+2018-01-31T02:14:04.813133162Z 2010990835
+2018-01-31T02:14:10.742070259Z 5928937097
+2018-01-31T02:14:15.034200219Z 4292129960
+2018-01-31T02:14:17.099288577Z 2065088358
+2018-01-31T02:14:26.151766031Z 9052477454
+2018-01-31T02:14:29.780351378Z 3628585347
+2018-01-31T02:14:33.594484378Z 3814133000
+2018-01-31T02:14:41.047571581Z 7453087203
+```
+
+### Moving_average
+
+Ví dụ này mình tính giá trị trung bình của 2 trường liên tiếp 1
+
+```sh
+> select * from cpu
+name: cpu
+time                           host    region value
+----                           ----    ------ -----
+2018-01-31T02:13:51.222039696Z minhkma kvm30  1
+2018-01-31T02:13:53.850030976Z minhkma kvm30  3
+2018-01-31T02:13:57.829384354Z minhkma kvm30  10
+2018-01-31T02:14:00.363663952Z minhkma kvm30  9
+2018-01-31T02:14:02.802142327Z minhkma kvm30  4
+2018-01-31T02:14:04.813133162Z minhkma kvm30  6
+2018-01-31T02:14:10.742070259Z minhkma kvm30  7
+2018-01-31T02:14:15.034200219Z minhkma kvm30  2
+2018-01-31T02:14:17.099288577Z minhkma kvm30  2
+2018-01-31T02:14:26.151766031Z minhkma kvm30  8
+2018-01-31T02:14:29.780351378Z minhkma kvm30  11
+2018-01-31T02:14:33.594484378Z minhkma kvm30  7
+2018-01-31T02:14:41.047571581Z minhkma kvm30  9
+
+> select MOVING_AVERAGE(value,2) from cpu
+name: cpu
+time                           moving_average
+----                           --------------
+2018-01-31T02:13:53.850030976Z 2
+2018-01-31T02:13:57.829384354Z 6.5
+2018-01-31T02:14:00.363663952Z 9.5
+2018-01-31T02:14:02.802142327Z 6.5
+2018-01-31T02:14:04.813133162Z 5
+2018-01-31T02:14:10.742070259Z 6.5
+2018-01-31T02:14:15.034200219Z 4.5
+2018-01-31T02:14:17.099288577Z 2
+2018-01-31T02:14:26.151766031Z 5
+2018-01-31T02:14:29.780351378Z 9.5
+2018-01-31T02:14:33.594484378Z 9
+2018-01-31T02:14:41.047571581Z 8
+```
+
+
