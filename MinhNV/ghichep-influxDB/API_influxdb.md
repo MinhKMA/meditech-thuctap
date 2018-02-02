@@ -21,8 +21,7 @@
     + field key có giá trị là 0.64 
     + timestamp ở lúc 1434055562000000000.
 
-`curl -i -XPOST 'http://localhost:8086/write?db=minhkma' --data-binary 'cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000'
-`
+`curl -i -XPOST 'http://localhost:8086/write?db=minhkma' --data-binary 'cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000'`
 
 - Khi ghi dữ liệu bạn phải chỉ định một cơ sở dữ liệu
 
@@ -70,7 +69,7 @@ API HTTP là phương tiện chính để truy vấn dữ liệu trong InfluxDB 
 - Nếu bạn muốn thời gian được định dạng theo Unix epoch format thì trong request của bạn thêm vào tham số `epoch`
 - Get epoch in seconds
 
-    `curl -G 'http://localhost:8086/query' --data-urlencode "db=mydb" --data-urlencode "epoch=s" --data-urlencode "q=SELECT \"value\" FROM \"cpu_load_short\" WHERE \"region\"='us-west'"`
+    `curl -G 'http://localhost:8086/query' --data-urlencode "db=minhkma" --data-urlencode "epoch=s" --data-urlencode "q=SELECT \"value\" FROM \"cpu_load_short\" WHERE \"region\"='us-west'"`
 
 ##### Authentication
 
