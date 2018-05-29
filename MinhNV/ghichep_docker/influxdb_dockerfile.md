@@ -17,7 +17,7 @@ gpgkey = https://repos.influxdata.com/influxdb.key' > /etc/yum.repos.d/influxdat
 
 RUN yum install influxdb -y
 EXPOSE 8086
-RUN /usr/bin/influxd -config /etc/influxdb/influxdb.conf
+CMD ["/usr/bin/influxd", "-config", "/etc/influxdb/influxdb.conf"]1
 ```
 
 - Sau đó build mội image từ dockerfile đã tạo 
