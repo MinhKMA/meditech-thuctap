@@ -1,14 +1,14 @@
 # Services IP Address on the server
-IP_ADDR=192.168.100.93
-IP_GATEWAY=192.168.100.1
+IP_ADDR=192.168.70.107
+IP_GATEWAY=192.168.70.1
 NETMASK=255.255.255.0
-NETDEVICE=eth0
+NETDEVICE=ens160
 NETPREFIX=24
-NETWORK=192.168.100.0
+NETWORK=192.168.70.0
 
 # DHCP Server IP Range. First and Last
-DHCP_MIN_HOST=192.168.100.10
-DHCP_MAX_HOST=192.168.100.20
+DHCP_MIN_HOST=192.168.70.230
+DHCP_MAX_HOST=192.168.70.250
 
 ### install
 yum install epel-release -y
@@ -52,13 +52,15 @@ systemctl restart xinetd
 systemctl enable xinetd
 
 cd /root
-wget http://centos-hn.viettelidc.com.vn/7/isos/x86_64/CentOS-7-x86_64-DVD-1708.iso
+wget http://centos-hn.viettelidc.com.vn/7/isos/x86_64/CentOS-7-x86_64-Minimal-1804.iso
 mkdir /mnt/centos
-mount -o loop /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos/
+mount -o loop /root/CentOS-7-x86_64-Minimal-1804.iso  /mnt/centos/
 cobbler import --arch=x86_64 --path=/mnt/centos --name=CentOS7
 cd /var/lib/cobbler/kickstarts
 wget https://raw.githubusercontent.com/MinhKMA/meditech-thuctap/master/MinhNV/ghi_chep_pxe/cobbler/centos7.ks
 sed -i "s/127\.0\.0\.1/${IP_ADDR}/" /var/lib/cobbler/kickstarts/centos7.ks
+cobbler profile edit --name=CentOS7-x86_64 --kickstart=/var/lib/cobbler/kickstarts/centos7.ks
+
 
 cobbler get-loaders
 cobbler check
