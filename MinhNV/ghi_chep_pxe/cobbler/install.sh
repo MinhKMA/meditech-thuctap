@@ -1,5 +1,6 @@
 # Services IP Address on the server
 IP_ADDR=192.168.100.93
+IP_GATEWAY=192.168.100.1
 NETMASK=255.255.255.0
 NETDEVICE=eth0
 NETPREFIX=24
@@ -37,7 +38,7 @@ firewall-cmd --reload
 sed -i "s/127\.0\.0\.1/${IP_ADDR}/" /etc/cobbler/settings
 sed -i "s/manage_dhcp: .*/manage_dhcp: 1/" /etc/cobbler/settings
 sed -i "s/subnet .* netmask .* {/subnet $NETWORK netmask $NETMASK {/" /etc/cobbler/dhcp.template
-sed -i "s/option routers .*/option routers             ${IP_ADDR};/" /etc/cobbler/dhcp.template
+sed -i "s/option routers .*/option routers             ${IP_GATEWAY};/" /etc/cobbler/dhcp.template
 sed -i "s/option domain-name-servers .*/option domain-name-servers 8.8.8.8;/" /etc/cobbler/dhcp.template
 sed -i "s/range dynamic-bootp .*/range dynamic-bootp        ${DHCP_MIN_HOST} ${DHCP_MAX_HOST};/" /etc/cobbler/dhcp.template
 sed -i "s/disable.*/disable\t\t\t= no/" /etc/xinetd.d/tftp
