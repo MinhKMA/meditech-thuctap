@@ -82,9 +82,9 @@ Save lại
 export KEY_COUNTRY="VN"
 export KEY_PROVINCE="HN"
 export KEY_CITY="Hanoi"
-export KEY_ORG="Meditech"
-export KEY_EMAIL="thao.nguyenvan@meditech.vn"
-export KEY_OU="Meditech"
+export KEY_ORG="KMA"
+export KEY_EMAIL="nguuyenvanminhkma@gmail.com"
+export KEY_OU="KM"
 
 export KEY_NAME="server"
 ```
